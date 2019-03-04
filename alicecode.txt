@@ -1,0 +1,34 @@
+book=open('alice.txt','r')
+words={}
+
+def repword(bad):
+    if word[-1] == bad:
+        word[-1].replace(bad,"")
+    elif word[0] == bad:
+        word[0].replace(bad,"")
+
+for line in book:
+    for word in line.split():
+        repword(']')
+        repword('[')
+        repword('_')
+        repword(':')
+        repword(',')
+        repword('"')
+        repword('(')
+        repword(')')
+        repword('.')
+        repword(';')
+        repword('!')
+        repword('?')
+        if word.isalpha():
+            word=word.lower()
+            if word in words:
+                words[word]+=1
+            else:
+                words[word]=1
+wordlist=list(words)
+wordlist.sort()
+for x in range(len(wordlist)):
+    print(wordlist[x],words[wordlist[x]])
+
